@@ -2,8 +2,12 @@ import pandas as pd
 from fredapi import Fred
 import matplotlib.pyplot as plt
 
+import os
+from dotenv import load_dotenv
+
 # 1. Initialize with your key
-fred = Fred(api_key='d3ae93c7c7e385809521ece65dde30d2')
+load_dotenv()
+fred = Fred(api_key=os.getenv('FRED_API_KEY'))
 
 # 2. Pull Data: Unemployment Rate (UNRATE) and Consumer Price Index (CPIAUCSL)
 unemp = fred.get_series('UNRATE')
